@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>هل تقدر؟ | مشكلتي</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    img {
+      width: 220px;
+      margin-bottom: 30px;
+      animation: fadeIn 1.5s ease;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      animation: fadeIn 2s ease;
+    }
+    button {
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      margin: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+    #startBtn {
+      background: linear-gradient(to right, #00bcd4, #2196f3);
+      color: white;
+    }
+    #exitBtn {
+      background-color: #e53935;
+      color: white;
+    }
+    #startBtn:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    #startBtn.clicked {
+      background: linear-gradient(to right, #66bb6a, #43a047);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <img src="مشكلتي%20PNG.png" alt="شعار مشكلتي" />
+  <h1 id="mainText">هل تقدر تحل التحديات؟</h1>
+  <div>
+    <button id="startBtn" onclick="tryToStart(event)">أكيد بقدر 💪</button>
+    <button id="exitBtn" onclick="tryToExit(event)">بنسحب 😓</button>
+  </div>
+
+  <script>
+    let moveAttemptsExit = 0;
+    let moveAttemptsStart = 0;
+    const exitBtn = document.getElementById('exitBtn');
+    const startBtn = document.getElementById('startBtn');
+    const mainText = document.getElementById('mainText');
+
+    function tryToExit(e) {
+      if (moveAttemptsExit < 3) {
+        const maxX = window.innerWidth - exitBtn.offsetWidth;
+        const maxY = window.innerHeight - exitBtn.offsetHeight;
+        const randX = Math.floor(Math.random() * maxX);
+        const randY = Math.floor(Math.random() * maxY);
+        exitBtn.style.position = 'absolute';
+        exitBtn.style.left = `${randX}px`;
+        exitBtn.style.top = `${randY}px`;
+        moveAttemptsExit++;
+      } else {
+        exitBtn.style.transform = 'scale(0.7)';
+        exitBtn.textContent = '😅 خلاص ثبتت!';
+        exitBtn.disabled = true;
+      }
+    }
+
+    function tryToStart(e) {
+      if (moveAttemptsStart < 3) {
+        const maxX = window.innerWidth - startBtn.offsetWidth;
+        const maxY = window.innerHeight - startBtn.offsetHeight;
+        const randX = Math.floor(Math.random() * maxX);
+        const randY = Math.floor(Math.random() * maxY);
+        startBtn.style.position = 'absolute';
+        startBtn.style.left = `${randX}px`;
+        startBtn.style.top = `${randY}px`;
+        moveAttemptsStart++;
+      } else {
+        startBtn.textContent = 'أكيد ✅';
+        startBtn.classList.add('clicked');
+        setTimeout(() => {
+          window.location.href = 'stage1.html';
+        }, 700);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 تهانينا!</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #00ff88;
+      animation: fadeIn 1s ease-out;
+    }
+    p {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      animation: fadeIn 1.5s ease-out;
+    }
+    .firework {
+      width: 8px;
+      height: 8px;
+      background-color: yellow;
+      position: absolute;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+    }
+    @keyframes explode {
+      0% {transform: scale(1); opacity: 1;}
+      100% {transform: scale(5); opacity: 0;}
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #00ff88;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #00cc66;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 مبروك!</h1>
+  <p>أنت أنهيت كل التحديات بنجاح! 👏</p>
+  <p>استعد للجائزة 🎁</p>
+  <button onclick="window.location.href='index.html'">🔁 الرجوع للبداية</button>
+  <script>
+    // تأثير الألعاب النارية
+    setInterval(() => {
+      const fw = document.createElement('div');
+      fw.classList.add('firework');
+      fw.style.top = `${Math.random() * 100}%`;
+      fw.style.left = `${Math.random() * 100}%`;
+      document.body.appendChild(fw);
+      setTimeout(() => fw.remove(), 1000);
+    }, 300);
+  </script>
+</body>
+</html>

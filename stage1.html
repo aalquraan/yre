@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المرحلة 1 - تدريب وهمي</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    h1 {
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-out;
+    }
+    #fakeBox {
+      width: 100px;
+      height: 100px;
+      background-color: #00cc66;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+    #fakeBox:hover {
+      transform: scale(1.1);
+    }
+    #message {
+      font-size: 1.4rem;
+      font-weight: bold;
+      display: none;
+      animation: fadeIn 1s ease-out;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin-top: 20px;
+      display: none;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, #2196f3, #00bcd4);
+      color: white;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(to right, #43a047, #66bb6a);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>المرحلة 1: اضغط على المربع الأخضر</h1>
+  <div id="fakeBox" onclick="completeFakeChallenge()">اضغطني</div>
+  <div id="message">👏 سهل صح؟ هسا التحدي الحقيقي بيبلش!</div>
+  <button onclick="goToStage2()">ابدأ المرحلة الحقيقية</button>
+
+  <script>
+    function completeFakeChallenge() {
+      document.getElementById('fakeBox').style.display = 'none';
+      document.getElementById('message').style.display = 'block';
+      document.querySelector('button').style.display = 'inline-block';
+    }
+
+    function goToStage2() {
+      window.location.href = 'stage2.html';
+    }
+  </script>
+</body>
+</html>
